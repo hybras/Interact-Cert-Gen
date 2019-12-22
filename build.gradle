@@ -1,13 +1,11 @@
 plugins {
 	id 'java'
 	id 'java-library'
-	id 'eclipse'
 	id 'application'
-	// id "com.github.johnrengelman.shadow" version "5.1.0"
 }
 
-sourceCompatibility=12
-targetCompatibility=12
+sourceCompatibility=13
+targetCompatibility=13
 
 repositories {
 	jcenter()
