@@ -16,13 +16,13 @@ public class ExcelReader {
 
 	public static void main(String[] args) {
 		try {
-			final XSSFWorkbook wb = new XSSFWorkbook("Templates/Attendance.xlsx");
+			final XSSFWorkbook wb = new XSSFWorkbook("templates/Attendance.xlsx");
 			final XSSFSheet sh = wb.getSheetAt(0);
 			final XSSFRow dateRow = sh.getRow(0);
 			final XSSFRow eventRow = sh.getRow(1);
 			final XSSFRow timeRow = sh.getRow(2);
 
-			XWPFDocument template = new XWPFDocument(new FileInputStream("Templates/Template.docx"));
+			XWPFDocument template = new XWPFDocument(new FileInputStream("templates/Template.docx"));
 
 			for (int r = 4; r < 38; r++) {
 				final XSSFRow record = sh.getRow(r);
@@ -54,7 +54,7 @@ public class ExcelReader {
 		replaceText(template, "EVENT", event);
 		replaceText(template, "HOURS", hours + " hours");
 
-		saveDocument(template, name + date + ".docx");
+		saveDocument(template, name + " " + date + ".docx");
 		// Undo Changes for next save
 		replaceText(template, date, "DATE");
 		replaceText(template, name, "NAME");
@@ -78,7 +78,7 @@ public class ExcelReader {
 	}
 
 	private static void saveDocument(XWPFDocument template, String file) {
-		try (FileOutputStream out = new FileOutputStream(file)) {
+		try (FileOutputStream out = new FileOutputStream("certificates/" + file)) {
 			template.write(out);
 		} catch (IOException e) {
 			e.printStackTrace();
