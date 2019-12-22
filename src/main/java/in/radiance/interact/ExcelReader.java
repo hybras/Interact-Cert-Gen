@@ -16,7 +16,7 @@ public class ExcelReader {
 
 	public static void main(String[] args) {
 		try {
-			final XSSFWorkbook wb = new XSSFWorkbook("Attendance.xlsx");
+			final XSSFWorkbook wb = new XSSFWorkbook("templates/Attendance.xlsx");
 			final XSSFSheet sh = wb.getSheetAt(0);
 			final XSSFRow dateRow = sh.getRow(0);
 			final XSSFRow eventRow = sh.getRow(1);
