@@ -24,11 +24,10 @@ public class ExcelReader {
 
 			XWPFDocument template = new XWPFDocument(new FileInputStream("Templates/Template.docx"));
 
-			for (int r = 3; r < sh.getLastRowNum() - 1; r++) {
+			for (int r = 4; r < 38; r++) {
 				final XSSFRow record = sh.getRow(r);
-				String first = record.getCell(0).toString();
-				String last = record.getCell(1).toString();
-				for (int c = 2; c < record.getLastCellNum(); c++) {
+				String name = record.getCell(0).toString();
+				for (int c = 1; c < record.getLastCellNum(); c++) {
 					String hours = record.getCell(c).toString();
 					final String eventName = eventRow.getCell(c).toString();
 					final String date = dateRow.getCell(c).toString();
@@ -40,7 +39,7 @@ public class ExcelReader {
 					}
 
 					// TODO Parse duration to double hours
-					certify(template, String.join(" ", first, last), date.toString(), eventName, hours);
+					certify(template, name, date.toString(), eventName, hours);
 				}
 			}
 			template.close();
