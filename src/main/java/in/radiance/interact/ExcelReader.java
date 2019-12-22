@@ -16,13 +16,13 @@ public class ExcelReader {
 
 	public static void main(String[] args) {
 		try {
-			final XSSFWorkbook wb = new XSSFWorkbook("templates/Attendance.xlsx");
+			final XSSFWorkbook wb = new XSSFWorkbook("Templates/Attendance.xlsx");
 			final XSSFSheet sh = wb.getSheetAt(0);
 			final XSSFRow dateRow = sh.getRow(0);
 			final XSSFRow eventRow = sh.getRow(1);
 			final XSSFRow timeRow = sh.getRow(2);
 
-			XWPFDocument template = new XWPFDocument(new FileInputStream("Template.docx"));
+			XWPFDocument template = new XWPFDocument(new FileInputStream("Templates/Template.docx"));
 
 			for (int r = 3; r < sh.getLastRowNum() - 1; r++) {
 				final XSSFRow record = sh.getRow(r);
