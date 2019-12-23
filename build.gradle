@@ -11,9 +11,6 @@ repositories {
 	jcenter()
 }
 
-compileJava {
-}
-
 dependencies {
 	implementation 'org.apache.poi:poi-ooxml:latest.release'
 }
