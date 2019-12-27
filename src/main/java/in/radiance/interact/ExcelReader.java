@@ -12,6 +12,9 @@ import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 import org.apache.poi.xwpf.usermodel.XWPFRun;
 
+import fr.opensagres.poi.xwpf.converter.pdf.PdfConverter;
+import fr.opensagres.poi.xwpf.converter.pdf.PdfOptions;
+
 public class ExcelReader {
 
 	public static void main(String[] args) {
@@ -54,7 +57,7 @@ public class ExcelReader {
 		replaceText(template, "EVENT", event);
 		replaceText(template, "HOURS", hours + " hours");
 
-		saveDocument(template, name + " " + date + ".docx");
+		saveDocument(template, name + " " + date);
 		// Undo Changes for next save
 		replaceText(template, date, "DATE");
 		replaceText(template, name, "NAME");
@@ -78,10 +81,10 @@ public class ExcelReader {
 	}
 
 	private static void saveDocument(XWPFDocument template, String file) {
-		try (FileOutputStream out = new FileOutputStream("certificates/" + file)) {
-			template.write(out);
+		try (FileOutputStream out = new FileOutputStream("certificates/" + file + ".pdf")) {
+			PdfConverter.getInstance().convert(template, out, PdfOptions.create());
 		} catch (IOException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage());
 		}
 	}
 }

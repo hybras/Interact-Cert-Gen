@@ -12,7 +12,8 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.apache.poi:poi-ooxml:latest.release'
+	implementation "org.apache.poi:poi-ooxml:latest.release"
+	implementation 'fr.opensagres.xdocreport:fr.opensagres.poi.xwpf.converter.pdf:latest.release'
 }
 
 application {
