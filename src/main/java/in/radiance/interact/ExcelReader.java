@@ -1,8 +1,10 @@
 package in.radiance.interact;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.List;
 
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -81,10 +83,13 @@ public class ExcelReader {
 	}
 
 	private static void saveDocument(XWPFDocument template, String file) {
+		File certificates = new File("./certificates");
 		try (FileOutputStream out = new FileOutputStream("certificates/" + file + ".pdf")) {
-			PdfConverter.getInstance().convert(template, out, PdfOptions.create());
-		} catch (IOException e) {
-			System.out.println(e.getMessage());
-		}
+				Files.createDirectories(certificates.toPath());
+				PdfConverter.getInstance().convert(template, out, PdfOptions.create());
+			} catch (IOException e) {
+				System.out.println(e.getMessage());
+			}
+		
 	}
 }
