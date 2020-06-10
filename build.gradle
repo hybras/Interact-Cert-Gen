@@ -4,8 +4,8 @@ plugins {
 	id 'application'
 }
 
-sourceCompatibility=13
-targetCompatibility=13
+sourceCompatibility=11
+targetCompatibility=11
 
 repositories {
 	jcenter()
